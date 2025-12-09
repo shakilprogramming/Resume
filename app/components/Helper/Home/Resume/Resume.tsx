@@ -6,9 +6,9 @@ import { BiBadge } from 'react-icons/bi';
 const Resume = () => {
   return (
     <div className='pt-20 sm:w[70] mx-auto grid grid-cols-1 xl:grid-cols-2 gap-10'>
-       <div>
+       <div >
         <h1 className='text-3xl sm:text-4xl font-bold text-white'>My work <span className='text-cyan-200'>Experice</span> </h1>
-        <div className='mt-10 '>
+        <div className='mt-10 ' data-aos="zoom-out" data-aos-anchor-placement="top-center" data-aos-delay="300">
             <ResumeCard Icon={FaCodepen} role="Full-Stack Developer"/>
             <ResumeCard Icon={FaReact} role="Full-end Developer"/>
             <ResumeCard Icon={BsDatabase} role="Full-Stack Developer"/>
@@ -20,7 +20,7 @@ const Resume = () => {
 
          <div>
             <h1 className='text-3xl sm:text-4xl font-bold text-white'>My work <span className='text-cyan-200'>Education</span></h1>
-                 <div className='mt-10 '>
+                 <div className='mt-10' data-aos="zoom-in" data-aos-anchor-placement="top-center">
             <ResumeCard Icon={BiBadge} role="Design Institution"  date="jan 2019 dec 2022"/>
             <ResumeCard Icon={FaReact} role="Front-End Developer" date='jan 2019 Dec 2022' />
             <ResumeCard Icon={BsDatabase} role="Full-Stack Developer"  date='jan 2019 dec 2022'/>

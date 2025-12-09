@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import {inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import ResponsiveNav from "./components/Helper/Home/Navbar/ResponsiveNav";
 import Footer from "./components/Helper/Home/Footer/Footer";
+import ScrollToTop from "./components/Helper/ScrollToTop";
 
+const font = Inter({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ["latin"],
+});
 
-const font =({
-   weight:['100','200','300','400','500','600','700','800','900'],
-   subsets:["latin"],
-})
 export const metadata: Metadata = {
-  title: "Shakil Profolio",
-  description: "Portfolio Buit with Next.js 1s",
+  title: "Shakil Portfolio",
+  description: "Portfolio Built with Next.js 15",
 };
 
 export default function RootLayout({
@@ -20,13 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${font.className} $antialiased bg-[#0d0d1f]`}
-      >
-        <ResponsiveNav/>
-          <Footer/>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${font.className} antialiased bg-[#0d0d1f]`} suppressHydrationWarning>
+        <ResponsiveNav />
         {children}
+        <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

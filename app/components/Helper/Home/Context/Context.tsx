@@ -58,7 +58,11 @@ const Context = () => {
 
        </div>
         </div>
-        <div className='md:p-10  p-5 bg[#131332] rounded-lg '>
+        <div 
+         data-aos="zoom-in"
+         data-aos-anchor-placement="top-center"
+         data-aos-delay="0"
+        className='md:p-10  p-5 bg[#131332] rounded-lg '>
          <input type='text' placeholder='Name' className='px-4 mt-6 py-3.5 bg[#363659] text-white outline-none rounded-md w-full placeholder:text-whte/70'></input>
          <input type='text' placeholder='Name' className='px-4  mt-6 py-3.5 bg[#363659] text-white outline-none rounded-md w-full placeholder:text-whte/70'></input>
          <input type='text' placeholder='Name' className='px-4  mt-6 py-3.5 bg[#363659] text-white outline-none rounded-md w-full placeholder:text-whte/70'></input>

@@ -1,22 +1,45 @@
-import React from 'react'
-type Props ={
-    image:string
-    title: string
-}
+import React from 'react';
+import Image from 'next/image';
 
-const BlogCard = ({image,title}:Props) => {
-  return (
-    <div>
-        <Image src={image} alt="blog" width={500} height={500} className="object-cover"/>
-        <p className='mt-4 text-gray-500 font-medium text-base sm:text-lg'>5 July 2024</p>
+type Props = {
+    image: string;
+    title: string;
+    date: string;
+    tags: string[];
+};
 
-        <h1 className='mt-5 text-lg sm:text-xl font-bold text-white hover:underline hover:text-cyan-300 cursor-pointer transition-all duration-300'>{title}</h1>
-        <div className='mt-4 flex gap-2 items-center'>
-            <p className='px-4 py-1.5 bg-blue-950 text-white text-sm sm:text-base font-bold font-bold rounded-full'>React</p>
-            <p className='px-4 py-1.5 bg-blue-950 text-white text-sm sm:text-base font-bold font-bold rounded-full'>React</p>
+const BlogCard = ({ image, title, date, tags }: Props) => {
+    return (
+        <div className='bg-[#14134145] rounded-xl overflow-hidden hover:scale-105 transition-all duration-300'>
+            <Image 
+                src={image} 
+                alt={title} 
+                width={500} 
+                height={300} 
+                className="object-cover w-full h-64"
+            />
+            <div className='p-6'>
+                <p className='text-gray-400 font-medium text-sm sm:text-base'>
+                    {date}
+                </p>
+
+                <h1 className='mt-3 text-lg sm:text-xl font-bold text-white hover:underline hover:text-cyan-300 cursor-pointer transition-all duration-300'>
+                    {title}
+                </h1>
+                
+                <div className='mt-4 flex gap-2 flex-wrap'>
+                    {tags.map((tag, index) => (
+                        <span 
+                            key={index}
+                            className='px-4 py-1.5 bg-blue-950 text-white text-sm sm:text-base font-bold rounded-full'
+                        >
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+            </div>
         </div>
-    </div>
-  )
-}
+    );
+};
 
-export default BlogCard
+export default BlogCard;

@@ -1,36 +1,66 @@
-import React from 'react'
-import {NavLink} from from "@/constant/constant"; 
-import { CgClose } from 'react-icons/cg'
+"use client";
 
-import Link from 'next/link';
-import React from 'react';
-import { CgClose } from 'react-icons/cg';
+import React from "react";
+import { CgClose } from "react-icons/cg";
+import { BiDownload } from "react-icons/bi";
+import Link from "next/link";
+import { NavLinks } from "../../../../constant/constant";
 
-type Props ={
-  showNav : boolean;
-  closeNav: () => void:
+type Props = {
+  showNav: boolean;
+  closeNav: () => void;
+};
 
-}
-const MobileNav = ({closeNav,showNav} : Props) => {
-  const nevOpen = showNav ? "Translate-x-0" ; 'translate-x-[100]'
+const MobileNav = ({ showNav, closeNav }: Props) => {
+  const navOpen = showNav ? "translate-x-0" : "translate-x-[-100%]";
+
   return (
-    <div>
-        <div className={'fixed inset-0 transform-all right-all right-0 duration-500 z-[1000z] bg-black opcaity-70 opacity-70 w-full h-screen `}></div>
-       <div className={`text-white ${navOpen} fixed justify-cemter flex flex-col h-full transform transition all duration-500 delay-300 w-[80] sm:w-[60%] bg-cyan-800 space-y-6 z-[100050] right-0 `}>
-        {NavLinks.map((link) =>{
-            return<Link key={link.id} href={link.url}
+    <>
+      {/* Overlay */}
+      <div
+        className={`fixed inset-0 z-[1000] bg-black/70 transition-opacity duration-300 ${
+          showNav ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={closeNav}
+      />
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed top-0 left-0 bottom-0 w-[80%] sm:w-[60%] z-[1001] bg-[#0f142e] transition-transform duration-300 ${navOpen}`}
       >
-        <p><Link key={link.id} href={link.url}>
-         <p className='text-whtte w-fit text-xl ml-12 border-b-[1.5px] pb-1 border-whitte sm:text-[30px }'></p>
-        </></p>
-      </Link>
-         <CgClose onClick={closeNav} className='absolute top-[0,7rem] right-[1.4rem] sm:w-8 sm:h-8 w-8 w-6 h-6'/>
-        })}
+        {/* Close Button */}
+        <CgClose
+          onClick={closeNav}
+          className="absolute top-4 right-4 w-8 h-8 text-white cursor-pointer"
+        />
 
-       </div>
-    
-    </div>
-  )
-}
+        {/* Logo and Name */}
+        <div className="flex flex-col items-center mt-16 mb-10">
+          <h1 className="text-2xl font-bold text-white">Shakil</h1>
+        </div>
 
-export default MobileNav
+        {/* Navigation Links */}
+        <nav className="flex flex-col space-y-6 px-8">
+          {NavLinks.map((link) => (
+            <Link
+              key={link.id}
+              href={link.url}
+              onClick={closeNav}
+              className="text-lg text-white font-medium hover:text-cyan-300 transition-all duration-200"
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          {/* Download CV Button */}
+          <button className="mt-6 px-6 py-3 text-sm rounded-lg bg-blue-600 hover:bg-blue-800 text-white flex items-center justify-center space-x-2 transition-all duration-300">
+            <BiDownload className="w-5 h-5" />
+            <span>Download CV</span>
+          </button>
+        </nav>
+      </div>
+    </>
+  );
+};
+
+export default MobileNav;
